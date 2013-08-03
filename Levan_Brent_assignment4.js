@@ -38,11 +38,34 @@ var checkPhoneNumber = function(number) {
         }
         
         }   
+}// end of check phone number
+
+var emailAddress = function(email) {
+    var symbolLocation = (email.split("@").length -1);
+            
+    if (symbolLocation ===1) {        
+         var symbol1 = email.indexOf("@"),   
+            emailStarts = symbol1+1,
+            emailEnds = email.length,
+            address = email.substring(emailStarts, emailEnds),
+            dotLocation = (address.split(".").length-1);
+            
+    if (dotLocation >= 1) {
+            return true;
+    } else {
+        return false;
+    }
+    
+    } else {
+        return false;
+    }
+    
 }
-   
+
     return {
         "checkNumeric": checkNumeric,
-        "checkPhoneNumber": checkPhoneNumber
+        "checkPhoneNumber": checkPhoneNumber,
+        "emailAddress": emailAddress
     };
     
 }// end of library
@@ -51,3 +74,4 @@ var newLib = new myLibrary();
 
 console.log("Are we sending a number " + newLib.checkNumeric("42"));
 console.log("Is this a phone number? " + newLib.checkPhoneNumber("123-456-7890"));
+console.log("Is this an email address?" + newLib.emailAddress("aaa@bbb.ccc"));
